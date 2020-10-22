@@ -1,0 +1,33 @@
+<div class="container is-widescreen" *ngIf="!hideLogin">
+  <div class="notification">
+    <form (ngSubmit)="submitForm()" #loginForm="ngForm">
+      <div class="field">
+        <label class="label">Email</label>
+        <input type="email" name="title" class="input" [(ngModel)]="username" #descInput="ngModel" required />
+        <div class="help is-error" *ngIf="descInput.invalid && descInput.touched">
+          Email is required
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Password</label>
+        <input type="password" name="title" class="input" [(ngModel)]="password" #descInput="ngModel" required />
+        <div class="help is-error" *ngIf="descInput.invalid && descInput.touched">
+          Title is required
+        </div>
+      </div>
+
+
+      <div class="field">
+        <button class="button is-fullwidth is-success" [disabled]="loginForm.invalid">Sign in </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div class="overlay" *ngIf="isLoading">
+  <div class="center">
+    <mat-progress-spinner diameter=50 mode="indeterminate" color="accent">
+    </mat-progress-spinner>
+  </div>
+</div>
