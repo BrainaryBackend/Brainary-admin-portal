@@ -10,9 +10,13 @@ import { FirebaseopsService } from './firebaseops.service';
 export class AppComponent {
   title = 'adminapp';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
 
   ngOnInit(): void {
+  }
+
+  gohome() {
+    this.router.navigateByUrl('login');
   }
 }

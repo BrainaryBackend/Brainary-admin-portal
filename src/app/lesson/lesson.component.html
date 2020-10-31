@@ -1,20 +1,21 @@
 <section class="hero is-primary is-bold">
   <div>
-    <h1 class="title">All Lessons</h1>
+    <h1 class="title">Lessons</h1>
   </div>
 </section>
 
 <section style="padding: 10px;">
   <form (ngSubmit)="submitForm()" #jobPostForm="ngForm">
     <div class="field">
-      <label class="label">Lesson title</label>
+      <label class="label">Upload a lesson</label>
+      <label>Lesson title</label>
       <input type="text" name="title" class="input" [(ngModel)]="title" #descInput="ngModel" required />
       <div class="help is-error" *ngIf="descInput.invalid && descInput.touched">
         Title is required
       </div>
     </div>
     <div class="field">
-      <label class="label">Upload thumbnail Image(Optional)</label>
+      <label>Upload thumbnail Image(Optional)</label>
       <div class="file has-name">
         <label class="file-label">
           <input class="file-input" type="file" name="lesson"  (change)="handleFileInput($event.target.files, 'image')"  accept="image/*">
@@ -33,7 +34,7 @@
       </div>
     </div>
     <div class="field">
-      <label class="label">Upload Video</label>
+      <label>Upload Video</label>
       <div class="file has-name">
         <label class="file-label">
           <input class="file-input" type="file" name="lesson"  (change)="handleFileInput($event.target.files, 'video')"  accept="video/*">
@@ -66,8 +67,9 @@
 
 </section>
 <section class="section">
+  <label class="label">All Lessons</label>
   <div *ngFor="let lesson of allLessons">
-    <div class="card">
+    <!-- <div class="card">
       <div class="card-content">
         <div class="media">
           <div class="media-left">
@@ -82,7 +84,7 @@
                 <button class="button is-small is-link">
                   View
                 </button>
-                <button class="button is-small is-danger" (click)="deletePost()">
+                <button class="button is-small is-danger" (click)="deletePost(lesson.id)">
                   Delete
                 </button>
             </div>
@@ -90,7 +92,8 @@
         </div>
       </div>
 
-    </div>
+    </div> -->
+    <app-lesson-card [lesson]="lesson" path="" ></app-lesson-card>
     <br />
   </div>
 </section>

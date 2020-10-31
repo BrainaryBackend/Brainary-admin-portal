@@ -5,13 +5,14 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: "AIzaSyDyXvHNmDaVG6SIuNOJmhZl0GhGRTD5iNU",
-    authDomain: "brainary-c9576.firebaseapp.com",
-    databaseURL: "https://brainary-c9576.firebaseio.com",
-    projectId: "brainary-c9576",
-    storageBucket: "brainary-c9576.appspot.com",
-    messagingSenderId: "570197924344",
-    appId: "1:570197924344:web:4fafccf7eb39e9c8f61e0d"
+    apiKey: "AIzaSyAF4OSDx2wm8MCcrbtUUECIk4fWNg9uh2A",
+    authDomain: "beliefhack-brainery-app.firebaseapp.com",
+    databaseURL: "https://beliefhack-brainery-app.firebaseio.com",
+    projectId: "beliefhack-brainery-app",
+    storageBucket: "beliefhack-brainery-app.appspot.com",
+    messagingSenderId: "444794876147",
+    appId: "1:444794876147:web:dd886c25875bfaf9180786",
+    measurementId: "G-PFGQTKGJDN"
   }
 };
 

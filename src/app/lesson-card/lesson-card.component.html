@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-left">
+          <figure class="image is-96x96">
+            <img [src]="lesson.thumbnailImageUrl!==''? lesson.thumbnailImageUrl: imageNotFound " alt="Placeholder image">
+          </figure>
+        </div>
+        <div class="media-content">
+          <p class="title is-6">{{lesson.title}}</p>
+          <p class="subtitle is-6">Duration: {{lesson.length}}</p>
+          <div class="buttons">
+              <button class="button is-small is-link" (click)="viewPost()">
+                View
+              </button>
+              <button class="button is-small is-danger" (click)="deletePost()">
+                Delete
+              </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>

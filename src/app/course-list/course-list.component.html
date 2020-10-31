@@ -1,0 +1,78 @@
+<section class="hero is-primary is-bold">
+    <div>
+        <h1 class="title">Courses</h1>
+    </div>
+</section>
+<section style="padding: 10px;">
+    <div>
+        <label class="label">Add new course</label>
+        <form (ngSubmit)="submitForm()" #jobPostForm="ngForm">
+            <div class="field">
+                <label class="label1">Course Name</label>
+                <input type="text" name="title" class="input" [(ngModel)]="title" #descInput="ngModel" required />
+                <div class="help is-error" *ngIf="descInput.invalid && descInput.touched">
+                    Title is required
+                </div>
+            </div>
+            <div class="field">
+                <label class="label1">Upload thumbnail Image(Optional)</label>
+                <div class="file has-name">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="lesson"
+                            (change)="handleFileInput($event.target.files, 'image')" accept="image/*">
+                        <span class="file-cta">
+                            <span class="file-icon">
+                                <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                                Choose a file…
+                            </span>
+                        </span>
+                        <span class="file-name">
+                            {{(thumbnailImage!=null) ? thumbnailImage.name : 'No File Selected'}}
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="field">
+                <button class="button is-fullwidth is-primary"  [disabled]="jobPostForm.invalid" >Add new course</button>
+            </div>
+        </form>
+    </div>
+</section>
+<section style="padding: 10px;">
+    <label class="label">Course List :</label>    
+    <div *ngFor="let course of allCourses">
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-left">
+                        <figure class="image is-96x96">
+                            <img [src]="course.previewImage!=='' ? course.previewImage : 'https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101028/112815904-stock-vector-no-image-available-icon-flat-vector-illustration.jpg?ver=6' " alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-6">{{course.courseName}}</p>
+                        <div class="buttons">
+                            <button class="button is-small is-link" (click)="openCourse(course)">
+                                View
+                            </button>
+                            <button class="button is-small is-danger" (click)="deleteCourse(course)">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <br />
+    </div>
+</section>
+
+<div class="overlay" *ngIf="isLoading">
+    <div class="center">
+        <mat-progress-spinner diameter=50 mode="indeterminate" color="accent">
+        </mat-progress-spinner>
+    </div>
+</div>

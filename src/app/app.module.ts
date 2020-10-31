@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,6 +16,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 
 import { ScrollableDirective } from './scrollable.directive';
 import { MatDialogModule} from '@angular/material/dialog';
@@ -29,6 +30,9 @@ import { ConfirmDialog } from './dialog/ConfirmDialog';
 import { LessonComponent } from './lesson/lesson.component';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
+import { CourseListComponent } from './course-list/course-list.component';
+import { ViewCourseComponent } from './view-course/view-course.component';
+import { LessonCardComponent } from './lesson-card/lesson-card.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,10 @@ import { UserComponent } from './user/user.component';
     ConfirmDialog,
     LessonComponent,
     LoginComponent,
-    UserComponent
+    UserComponent,
+    CourseListComponent,
+    ViewCourseComponent,
+    LessonCardComponent
   ],
   imports: [
     BrowserModule,
@@ -57,10 +64,12 @@ import { UserComponent } from './user/user.component';
     MatProgressSpinnerModule,
     MatTabsModule,
     FormsModule,
+    MatSelectModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'login', component: LoginComponent}
+      { path: 'login', component: LoginComponent},
+      { path: 'course', component: ViewCourseComponent},
     ]),
     BrowserAnimationsModule,
     InfiniteScrollModule

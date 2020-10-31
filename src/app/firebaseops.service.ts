@@ -42,8 +42,32 @@ export class FirebaseopsService {
     return this.firestore.collection<Lesson>('lessons').add(lesson);
   }
 
+  addVideoToCourse(lesson: Lesson, courseId: string): Promise<DocumentReference> {
+    return this.firestore.collection<Lesson>(courseId).add(lesson);
+  }
+
+  addNewCourse(course: Course): Promise<DocumentReference> {
+    return this.firestore.collection<Course>('course_list').add(course);
+  }
+
+  getCourseList(): AngularFirestoreCollection<Course> {
+    return this.firestore.collection<Course>('course_list');
+  }
+
+  getCourseContent(courseId: string): AngularFirestoreCollection<Lesson> {
+    return this.firestore.collection<Lesson>(courseId);
+  }
+
   deleteLesson(docId: string){
     return this.firestore.collection<Lesson>('lessons').doc(docId).delete();
+  }
+
+  deleteLessonFromCourse(docId: string, courseId: string){
+    return this.firestore.collection<Lesson>(courseId).doc(docId).delete();
+  }
+
+  deleteFileFromFireStore(path) {
+    this.storage.storage.refFromURL(path).delete();
   }
 
   signInWithEmail(email, password) {
@@ -62,6 +86,10 @@ export class FirebaseopsService {
 
   getAllUsers(): AngularFirestoreCollection<BrainaryUser> {
     return this.firestore.collection<BrainaryUser>('users');
+  }
+
+  deleteCourse(course: Course) {
+      this.firestore.collection<Course>('course_list').doc(course.id).delete();
   }
 
   private getDownloadUrl$(
